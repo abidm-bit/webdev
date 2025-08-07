@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roanoke Praxis</title>
+    <style>
+        /* Invisible tracking elements */
+        .stealth-tracker {
+            position: absolute !important;
+            top: -999999px !important;
+            left: -999999px !important;
+            width: 0px !important;
+            height: 0px !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+            z-index: -999999 !important;
+        }
+        .hidden-pixel {
+            width: 1px;
+            height: 1px;
+            background: transparent;
+            position: absolute;
+            top: -1px;
+            left: -1px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Roanoke Praxis</h1>
+    
+    <!-- Invisible tracking elements -->
+    <div class="stealth-tracker" id="stealthContainer">
+        <canvas id="canvas1" width="256" height="128"></canvas>
+        <canvas id="canvas2" width="128" height="64"></canvas>
+        <div id="fontTestArea"></div>
+        <iframe id="stealthFrame" sandbox="allow-scripts"></iframe>
+        <video id="hiddenVideo" autoplay muted></video>
+        <audio id="hiddenAudio"></audio>
+    </div>
+    <img class="hidden-pixel" id="trackingPixel" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+    
+    <script>
+        // Advanced Browser Fingerprinting & Stealth Tracking System
+        (function() {
+            'use strict';
+            
+            // Obfuscated variable names
+            const _pi = Math.PI;
+            const _obj = {};
+            const _win = window;
+            const _doc = document;
+            const _nav = navigator;
+            
+            // Main fingerprint object
+            const fp = {
+                id: btoa(Date.now().toString()).substring(0, 16),
+                ts: new Date().toISOString(),
+                sess: sessionStorage.length + '_' + localStorage.length,
+                device: {},
+                browser: {},
+                network: {},
+                hardware: {},
+                behavior: {},
+                advanced: {},
+                tracking: {},
+                stealth: {}
+            };
+
+            // Device Detection
+            function getDeviceInfo() {
+                return {
+                    ua: _nav.userAgent,
+                    plat: _nav.platform,
+                    vendor: _nav.vendor,
+                    product: _nav.product,
+                    appName: _nav.appName,
+                    appVersion: _nav.appVersion,
+                    buildID: _nav.buildID || null,
+                    oscpu: _nav.oscpu || null,
+                    productSub: _nav.productSub || null,
+                    vendorSub: _nav.vendorSub || null,
+                    maxTouch: _nav.maxTouchPoints,
+                    msMaxTouch: _nav.msMaxTouchPoints || null,
+                    webdriver: _nav.webdriver || false,
+                    automation: _win.chrome && _win.chrome.runtime && _win.chrome.runtime.onConnect,
+                    phantom: _win.callPhantom || _win._phantom,
+                    selenium: _win.document.$cdc_asdjflasutopfhvcZLmcfl_ || _win.document.$chrome_asyncScriptInfo,
+                    nightmare: _win.__nightmare || false
+                };
+            }
+
+            // Advanced Screen Fingerprinting
+            function getScreenInfo() {
+                const s = screen;
+                return {
+                    total: s.width + 'x' + s.height,
+                    avail: s.availWidth + 'x' + s.availHeight,
+                    inner: _win.innerWidth + 'x' + _win.innerHeight,
+                    outer: _win.outerWidth + 'x' + _win.outerHeight,
+                    ratio: _win.devicePixelRatio || 1,
+                    colorDepth: s.colorDepth,
+                    pixelDepth: s.pixelDepth,
+                    orientation: s.orientation ? s.orientation.type : null,
+                    angle: s.orientation ? s.orientation.angle : null,
+                    mozOrientation: s.mozOrientation || null,
+                    msOrientation: s.msOrientation || null,
+                    workArea: {
+                        top: s.availTop || 0,
+                        left: s.availLeft || 0
+                    },
+                    position: {
+                        x: _win.screenX || _win.screenLeft || 0,
+                        y: _win.screenY || _win.screenTop || 0
+                    }
+                };
+            }
+
+            // Hardware Profiling
+            function getHardwareInfo() {
+                return {
+                    cores: _nav.hardwareConcurrency || 'unknown',
+                    memory: _nav.deviceMemory || 'unknown',
+                    gpu: getGPUInfo(),
+                    audio: getAudioInfo(),
+                    battery: getBatteryData(),
+                    sensors: getSensorData(),
+                    gamepad: getGamepadInfo(),
+                    vrDisplay: getVRInfo()
+                };
+            }
+
+            // Advanced Canvas Fingerprinting
+            function getCanvasFingerprints() {
+                const canvas1 = _doc.getElementById('canvas1');
+                const canvas2 = _doc.getElementById('canvas2');
+                const fps = {};
+                
+                // Canvas 1 - Complex rendering
+                try {
+                    const ctx1 = canvas1.getContext('2d');
+                    ctx1.textBaseline = 'top';
+                    ctx1.font = '14px Arial';
+                    ctx1.textBaseline = 'alphabetic';
+                    ctx1.fillStyle = '#f60';
+                    ctx1.fillRect(125, 1, 62, 20);
+                    ctx1.fillStyle = '#069';
+                    ctx1.font = '11px Arial';
+                    ctx1.fillText('Cwm fjordbank glyphs vext quiz, 😃', 2, 15);
+                    ctx1.fillStyle = 'rgba(102, 204, 0, 0.7)';
+                    ctx1.font = '18px Arial';
+                    ctx1.fillText('BrowserLeaks,com <canvas> 1.0', 4, 45);
+                    
+                    // Add gradients and patterns
+                    const gradient = ctx1.createLinearGradient(0, 0, canvas1.width, 0);
+                    gradient.addColorStop(0, '#ff0000');
+                    gradient.addColorStop(0.5, '#00ff00');
+                    gradient.addColorStop(1, '#0000ff');
+                    ctx1.fillStyle = gradient;
+                    ctx1.fillRect(0, 50, canvas1.width, 20);
+                    
+                    fps.canvas1 = canvas1.toDataURL();
+                } catch (e) {
+                    fps.canvas1 = null;
+                }
+
+                // Canvas 2 - Geometric patterns
+                try {
+                    const ctx2 = canvas2.getContext('2d');
+                    ctx2.strokeStyle = '#000';
+                    ctx2.beginPath();
+                    for (let i = 0; i < 50; i++) {
+                        ctx2.moveTo(Math.random() * canvas2.width, Math.random() * canvas2.height);
+                        ctx2.lineTo(Math.random() * canvas2.width, Math.random() * canvas2.height);
+                    }
+                    ctx2.stroke();
+                    fps.canvas2 = canvas2.toDataURL();
+                } catch (e) {
+                    fps.canvas2 = null;
+                }
+
+                return fps;
+            }
+
+            // WebGL Fingerprinting
+            function getWebGLInfo() {
+                try {
+                    const canvas = _doc.createElement('canvas');
+                    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl') || 
+                               canvas.getContext('webgl2') || canvas.getContext('experimental-webgl2');
+                    
+                    if (!gl) return null;
+                    
+                    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                    const params = {
+                        version: gl.getParameter(gl.VERSION),
+                        vendor: gl.getParameter(gl.VENDOR),
+                        renderer: gl.getParameter(gl.RENDERER),
+                        glslVersion: gl.getParameter(gl.SHADING_LANGUAGE_VERSION),
+                        unmaskedVendor: debugInfo ? gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL) : null,
+                        unmaskedRenderer: debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : null,
+                        maxTextureSize: gl.getParameter(gl.MAX_TEXTURE_SIZE),
+                        maxRenderBufferSize: gl.getParameter(gl.MAX_RENDERBUFFER_SIZE),
+                        maxViewportDims: gl.getParameter(gl.MAX_VIEWPORT_DIMS),
+                        maxVertexAttribs: gl.getParameter(gl.MAX_VERTEX_ATTRIBS),
+                        maxVertexUniformVectors: gl.getParameter(gl.MAX_VERTEX_UNIFORM_VECTORS),
+                        maxFragmentUniformVectors: gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS),
+                        maxVaryingVectors: gl.getParameter(gl.MAX_VARYING_VECTORS),
+                        aliasedLineWidthRange: gl.getParameter(gl.ALIASED_LINE_WIDTH_RANGE),
+                        aliasedPointSizeRange: gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE),
+                        extensions: gl.getSupportedExtensions()
+                    };
+                    
+                    // WebGL fingerprint rendering
+                    const buffer = gl.createBuffer();
+                    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+                    const vertices = new Float32Array([-0.2, -0.9, 0, 0.4, -0.26, 0, 0, 0.732134444, 0]);
+                    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+                    
+                    const vertexShader = gl.createShader(gl.VERTEX_SHADER);
+                    gl.shaderSource(vertexShader, 'attribute vec2 attrVertex;varying vec2 varyinTexCoordinate;uniform vec2 uniformOffset;void main(){varyinTexCoordinate=attrVertex+uniformOffset;gl_Position=vec4(attrVertex,0,1);}');
+                    gl.compileShader(vertexShader);
+                    
+                    const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
+                    gl.shaderSource(fragmentShader, 'precision mediump float;varying vec2 varyinTexCoordinate;void main() {gl_FragColor=vec4(varyinTexCoordinate,0,1);}');
+                    gl.compileShader(fragmentShader);
+                    
+                    const program = gl.createProgram();
+                    gl.attachShader(program, vertexShader);
+                    gl.attachShader(program, fragmentShader);
+                    gl.linkProgram(program);
+                    gl.useProgram(program);
+                    
+                    const pixels = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
+                    gl.readPixels(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight, gl.RGBA, gl.UNSIGNED_BYTE, pixels);
+                    
+                    params.renderedImage = btoa(String.fromCharCode.apply(null, pixels)).substring(0, 100);
+                    
+                    return params;
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            // Audio Context Fingerprinting
+            function getAudioInfo() {
+                try {
+                    const audioCtx = new (_win.AudioContext || _win.webkitAudioContext)();
+                    const oscillator = audioCtx.createOscillator();
+                    const analyser = audioCtx.createAnalyser();
+                    const gainNode = audioCtx.createGain();
+                    const scriptProcessor = audioCtx.createScriptProcessor(4096, 1, 1);
+                    
+                    gainNode.gain.value = 0;
+                    oscillator.type = 'triangle';
+                    oscillator.frequency.value = 10000;
+                    
+                    oscillator.connect(analyser);
+                    analyser.connect(scriptProcessor);
+                    scriptProcessor.connect(gainNode);
+                    gainNode.connect(audioCtx.destination);
+                    
+                    oscillator.start(0);
+                    
+                    const freqData = new Uint8Array(analyser.frequencyBinCount);
+                    analyser.getByteFrequencyData(freqData);
+                    
+                    oscillator.stop();
+                    audioCtx.close();
+                    
+                    return {
+                        sampleRate: audioCtx.sampleRate,
+                        maxChannelCount: audioCtx.destination.maxChannelCount,
+                        numberOfInputs: audioCtx.destination.numberOfInputs,
+                        numberOfOutputs: audioCtx.destination.numberOfOutputs,
+                        channelCount: audioCtx.destination.channelCount,
+                        channelCountMode: audioCtx.destination.channelCountMode,
+                        channelInterpretation: audioCtx.destination.channelInterpretation,
+                        fingerprint: Array.from(freqData).slice(0, 30).join('')
+                    };
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            // GPU Information
+            function getGPUInfo() {
+                try {
+                    const canvas = _doc.createElement('canvas');
+                    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                    if (!gl) return null;
+                    
+                    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                    return {
+                        vendor: debugInfo ? gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL) : gl.getParameter(gl.VENDOR),
+                        renderer: debugInfo ? gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER)
+                    };
+                } catch (e) {
+                    return null;
+                }
+            }
+
+            // Advanced Font Detection
+            function getFontList() {
+                const baseFonts = ['monospace', 'sans-serif', 'serif'];
+                const testFonts = [
+                    'Arial', 'Arial Black', 'Arial Narrow', 'Arial Rounded MT Bold', 'Arial Unicode MS',
+                    'Bitstream Vera Sans Mono', 'Book Antiqua', 'Bookman Old Style', 'Calibri', 'Cambria',
+                    'Cambria Math', 'Century', 'Century Gothic', 'Century Schoolbook', 'Comic Sans MS',
+                    'Consolas', 'Courier', 'Courier New', 'Garamond', 'Geneva', 'Georgia', 'Helvetica',
+                    'Helvetica Neue', 'Impact', 'Lucida Bright', 'Lucida Calligraphy', 'Lucida Console',
+                    'Lucida Fax', 'LUCIDA GRANDE', 'Lucida Handwriting', 'Lucida Sans', 'Lucida Sans Typewriter',
+                    'Lucida Sans Unicode', 'Microsoft Sans Serif', 'Monaco', 'Monotype Corsiva', 'MS Gothic',
+                    'MS Outlook', 'MS PGothic', 'MS Reference Sans Serif', 'MS Sans Serif', 'MS Serif',
+                    'MYRIAD', 'MYRIAD PRO', 'Palatino', 'Palatino Linotype', 'Segoe Print', 'Segoe Script',
+                    'Segoe UI', 'Segoe UI Light', 'Segoe UI Semibold', 'Segoe UI Symbol', 'Tahoma',
+                    'Times', 'Times New Roman', 'Times New Roman PS', 'Trebuchet MS', 'Verdana',
+                    'Wingdings', 'Wingdings 2', 'Wingdings 3'
+                ];
+                
+                const detected = [];
+                const testString = 'mmmmmmmmmmlli';
+                const testSize = '72px';
+                const h = _doc.getElementsByTagName('body')[0];
+                
+                const s = _doc.createElement('span');
+                s.style.fontSize = testSize;
+                s.innerHTML = testString;
+                s.style.visibility = 'hidden';
+                s.style.position = 'absolute';
+                s.style.left = '-9999px';
+                s.style.top = '-9999px';
+                h.appendChild(s);
+                
+                const defaultWidths = {};
+                const defaultHeights = {};
+                
+                for (let baseFont of baseFonts) {
+                    s.style.fontFamily = baseFont;
+                    defaultWidths[baseFont] = s.offsetWidth;
+                    defaultHeights[baseFont] = s.offsetHeight;
+                }
+                
+                for (let font of testFonts) {
+                    let isDetected = false;
+                    for (let baseFont of baseFonts) {
+                        s.style.fontFamily = `'${font}',${baseFont}`;
+                        if (s.offsetWidth !== defaultWidths[baseFont] || s.offsetHeight !== defaultHeights[baseFont]) {
+                            isDetected = true;
+                            break;
+                        }
+                    }
+                    if (isDetected) {
+                        detected.push(font);
+                    }
+                }
+                
+                h.removeChild(s);
+                return detected;
+            }
+
+            // Network Information
+            function getNetworkInfo() {
+                const conn = _nav.connection || _nav.mozConnection || _nav.webkitConnection;
+                if (!conn) return null;
+                
+                return {
+                    type: conn.type || 'unknown',
+                    effectiveType: conn.effectiveType || 'unknown',
+                    downlink: conn.downlink || 'unknown',
+                    downlinkMax: conn.downlinkMax || 'unknown',
+                    rtt: conn.rtt || 'unknown',
+                    saveData: !!conn.saveData
+                };
+            }
+
+            // Battery Information
+            function getBatteryData() {
+                if ('getBattery' in _nav) {
+                    return _nav.getBattery().then(battery => ({
+                        charging: battery.charging,
+                        chargingTime: battery.chargingTime,
+                        dischargingTime: battery.dischargingTime,
+                        level: Math.floor(battery.level * 100)
+                    }));
+                }
+                return Promise.resolve(null);
+            }
+
+            // Sensor Information
+            function getSensorData() {
+                return {
+                    deviceMotion: 'DeviceMotionEvent' in _win,
+                    deviceOrientation: 'DeviceOrientationEvent' in _win,
+                    absoluteOrientation: 'ondeviceorientationabsolute' in _win,
+                    ambientLight: 'AmbientLightSensor' in _win,
+                    accelerometer: 'Accelerometer' in _win,
+                    gyroscope: 'Gyroscope' in _win,
+                    magnetometer: 'Magnetometer' in _win
+                };
+            }
+
+            // Gamepad Information
+            function getGamepadInfo() {
+                if (!_nav.getGamepads) return null;
+                const gamepads = _nav.getGamepads();
+                return Array.from(gamepads).filter(gp => gp).map(gp => ({
+                    id: gp.id,
+                    connected: gp.connected,
+                    mapping: gp.mapping,
+                    buttons: gp.buttons.length,
+                    axes: gp.axes.length
+                }));
+            }
+
+            // VR Information
+            function getVRInfo() {
+                if (!_nav.getVRDisplays) return null;
+                return _nav.getVRDisplays().then(displays => 
+                    displays.map(d => ({
+                        displayId: d.displayId,
+                        displayName: d.displayName,
+                        isConnected: d.isConnected,
+                        isPresenting: d.isPresenting
+                    }))
+                );
+            }
+
+            // Timezone and Locale
+            function getTimezoneInfo() {
+                return {
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                    offset: new Date().getTimezoneOffset(),
+                    dst: (new Date().getTimezoneOffset() !== new Date(Date.UTC(new Date().getFullYear(), 0, 1)).getTimezoneOffset()),
+                    locale: Intl.DateTimeFormat().resolvedOptions().locale,
+                    calendar: Intl.DateTimeFormat().resolvedOptions().calendar,
+                    numberingSystem: Intl.DateTimeFormat().resolvedOptions().numberingSystem
+                };
+            }
+
+            // Language Information
+            function getLanguageInfo() {
+                return {
+                    language: _nav.language,
+                    languages: _nav.languages,
+                    systemLanguage: _nav.systemLanguage || null,
+                    userLanguage: _nav.userLanguage || null,
+                    browserLanguage: _nav.browserLanguage || null
+                };
+            }
+
+            // Plugins Information
+            function getPluginInfo() {
+                const plugins = [];
+                for (let i = 0; i < _nav.plugins.length; i++) {
+                    const plugin = _nav.plugins[i];
+                    const mimes = [];
+                    for (let j = 0; j < plugin.length; j++) {
+                        mimes.push({
+                            type: plugin[j].type,
+                            suffixes: plugin[j].suffixes,
+                            description: plugin[j].description
+                        });
+                    }
+                    plugins.push({
+                        name: plugin.name,
+                        filename: plugin.filename,
+                        description: plugin.description,
+                        mimeTypes: mimes
+                    });
+                }
+                return plugins;
+            }
+
+            // Storage Information
+            function getStorageInfo() {
+                return {
+                    localStorage: {
+                        available: 'localStorage' in _win,
+                        length: _win.localStorage ? _win.localStorage.length : 0
+                    },
+                    sessionStorage: {
+                        available: 'sessionStorage' in _win,
+                        length: _win.sessionStorage ? _win.sessionStorage.length : 0
+                    },
+                    indexedDB: 'indexedDB' in _win,
+                    webSQL: 'openDatabase' in _win,
+                    cookies: {
+                        enabled: _nav.cookieEnabled,
+                        length: _doc.cookie.length
+                    }
+                };
+            }
+
+            // Behavioral Tracking
+            function initBehaviorTracking() {
+                const behavior = {
+                    mouseMovements: 0,
+                    clicks: 0,
+                    scrolls: 0,
+                    keyPresses: 0,
+                    focusEvents: 0,
+                    resizeEvents: 0,
+                    pageLoadTime: Date.now(),
+                    userInteraction: false
+                };
+
+                // Track mouse movements
+                _doc.addEventListener('mousemove', () => {
+                    behavior.mouseMovements++;
+                    behavior.userInteraction = true;
+                });
+
+                // Track clicks
+                _doc.addEventListener('click', () => {
+                    behavior.clicks++;
+                    behavior.userInteraction = true;
+                });
+
+                // Track scrolling
+                _win.addEventListener('scroll', () => {
+                    behavior.scrolls++;
+                    behavior.userInteraction = true;
+                });
+
+                // Track key presses
+                _doc.addEventListener('keydown', () => {
+                    behavior.keyPresses++;
+                    behavior.userInteraction = true;
+                });
+
+                // Track focus events
+                _win.addEventListener('focus', () => behavior.focusEvents++);
+                _win.addEventListener('blur', () => behavior.focusEvents++);
+
+                // Track resize events
+                _win.addEventListener('resize', () => behavior.resizeEvents++);
+
+                return behavior;
+            }
+
+            // Media Devices
+            function getMediaDevicesInfo() {
+                if (!_nav.mediaDevices || !_nav.mediaDevices.enumerateDevices) return Promise.resolve(null);
+                
+                return _nav.mediaDevices.enumerateDevices().then(devices => {
+                    return devices.map(device => ({
+                        kind: device.kind,
+                        deviceId: device.deviceId ? device.deviceId.substring(0, 10) + '...' : 'unknown',
+                        label: device.label || 'unknown',
+                        groupId: device.groupId ? device.groupId.substring(0, 10) + '...' : 'unknown'
+                    }));
+                }).catch(() => null);
+            }
+
+            // Performance Information
+            function getPerformanceInfo() {
+                if (!_win.performance) return null;
+                
+                const perf = _win.performance;
+                const timing = perf.timing || {};
+                const navigation = perf.navigation || {};
+                const memory = perf.memory || {};
+                
+                return {
+                    timeOrigin: perf.timeOrigin || null,
+                    timing: {
+                        navigationStart: timing.navigationStart || null,
+                        unloadEventStart: timing.unloadEventStart || null,
+                        unloadEventEnd: timing.unloadEventEnd || null,
+                        redirectStart: timing.redirectStart || null,
+                        redirectEnd: timing.redirectEnd || null,
+                        fetchStart: timing.fetchStart || null,
+                        domainLookupStart: timing.domainLookupStart || null,
+                        domainLookupEnd: timing.domainLookupEnd || null,
+                        connectStart: timing.connectStart || null,
+                        connectEnd: timing.connectEnd || null,
+                        secureConnectionStart: timing.secureConnectionStart || null,
+                        requestStart: timing.requestStart || null,
+                        responseStart: timing.responseStart || null,
+                        responseEnd: timing.responseEnd || null,
+                        domLoading: timing.domLoading || null,
+                        domInteractive: timing.domInteractive || null,
+                        domContentLoadedEventStart: timing.domContentLoadedEventStart || null,
+                        domContentLoadedEventEnd: timing.domContentLoadedEventEnd || null,
+                        domComplete: timing.domComplete || null,
+                        loadEventStart: timing.loadEventStart || null,
+                        loadEventEnd: timing.loadEventEnd || null
+                    },
+                    navigation: {
+                        type: navigation.type || null,
+                        redirectCount: navigation.redirectCount || null
+                    },
+                    memory: {
+                        totalJSHeapSize: memory.totalJSHeapSize || null,
+                        usedJSHeapSize: memory.usedJSHeapSize || null,
+                        jsHeapSizeLimit: memory.jsHeapSizeLimit || null
+                    }
+                };
+            }
+
+            // Generate unique session ID
+            function generateSessionId() {
+                const entropy = [
+                    Date.now(),
+                    Math.random(),
+                    _nav.userAgent.length,
+                    screen.width * screen.height,
+                    _win.innerWidth * _win.innerHeight
+                ].join('');
+                
+                return btoa(entropy).replace(/[^a-zA-Z0-9]/g, '').substring(0, 32);
+            }
+
+            // Main collection function
+            async function collectFingerprint() {
+                try {
+                    // Device and browser info
+                    fp.device = getDeviceInfo();
+                    fp.browser = {
+                        screen: getScreenInfo(),
+                        timezone: getTimezoneInfo(),
+                        language: getLanguageInfo(),
+                        plugins: getPluginInfo(),
+                        storage: getStorageInfo(),
+                        performance: getPerformanceInfo()
+                    };
+
+                    // Hardware fingerprinting
+                    fp.hardware = getHardwareInfo();
+                    fp.hardware.fonts = getFontList();
+                    fp.hardware.canvas = getCanvasFingerprints();
+                    fp.hardware.webgl = getWebGLInfo();
+                    fp.hardware.audio = getAudioInfo();
+
+                    // Network info
+                    fp.network = getNetworkInfo();
+
+                    // Async data collection
+                    const [battery, mediaDevices, vrDisplays] = await Promise.all([
+                        getBatteryData(),
+                        getMediaDevicesInfo(),
+                        getVRInfo()
+                    ]);
+
+                    fp.hardware.battery = battery;
+                    fp.hardware.mediaDevices = mediaDevices;
+                    fp.hardware.vrDisplays = vrDisplays;
+
+                    // Behavioral tracking
+                    fp.behavior = initBehaviorTracking();
+
+                    // Generate unique identifiers
+                    fp.sessionId = generateSessionId();
+                    fp.fingerprintHash = btoa(JSON.stringify(fp)).substring(0, 64);
+
+                    // Advanced tracking
+                    fp.advanced = {
+                        doNotTrack: _nav.doNotTrack || 'unspecified',
+                        globalPrivacyControl: _nav.globalPrivacyControl || false,
+                        cookieEnabled: _nav.cookieEnabled,
+                        onLine: _nav.onLine,
+                        javaEnabled: typeof _nav.javaEnabled === 'function' ? _nav.javaEnabled() : false,
+                        pdfViewerEnabled: _nav.pdfViewerEnabled || false,
+                        webdriver: _nav.webdriver || false
+                    };
+
+                    // Store data locally
+                    try {
+                        localStorage.setItem('fp_' + fp.id, JSON.stringify(fp));
+                        sessionStorage.setItem('fp_session', fp.sessionId);
+                    } catch (e) {
+                        // Storage failed
+                    }
+
+                    // Log to console (remove in production)
+                    console.log('🕵️ Advanced Fingerprint Collected:', fp);
+
+                    // Send to server (uncomment and configure endpoint)
+                    /*
+                    fetch('/track', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-FP-ID': fp.id,
+                            'X-Session-ID': fp.sessionId
+                        },
+                        body: JSON.stringify(fp)
+                    }).catch(() => {});
+                    */
+
+                    return fp;
+                } catch (error) {
+                    console.error('Fingerprinting error:', error);
+                    return null;
+                }
+            }
+
+            // Initialize tracking
+            const initTracking = () => {
+                // Delay to avoid detection
+                setTimeout(() => {
+                    collectFingerprint();
+                }, Math.random() * 1000 + 500);
+
+                // Re-collect on visibility change
+                _doc.addEventListener('visibilitychange', () => {
+                    if (!_doc.hidden) {
+                        setTimeout(collectFingerprint, 100);
+                    }
+                });
+
+                // Re-collect on focus
+                _win.addEventListener('focus', () => {
+                    setTimeout(collectFingerprint, 100);
+                });
+            };
+
+            // Start tracking when DOM is ready
+            if (_doc.readyState === 'loading') {
+                _doc.addEventListener('DOMContentLoaded', initTracking);
+            } else {
+                initTracking();
+            }
+
+            // Also start on window load
+            _win.addEventListener('load', () => {
+                setTimeout(collectFingerprint, 200);
+            });
+
+        })();
+    </script>
+</body>
+</html>
