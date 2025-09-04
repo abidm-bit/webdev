@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <h2>Site Modifications</h2>
+    <p>Choose your colorway:</p>
+    
+    <div class="colorway-options">
+      <button class="colorway-btn active" data-colorway="blue">
+        <div class="color-preview blue"></div>
+        <span>Blue</span>
+      </button>
+      
+      <button class="colorway-btn" data-colorway="green">
+        <div class="color-preview green"></div>
+        <span>Green</span>
+      </button>
+      
+      <button class="colorway-btn" data-colorway="purple">
+        <div class="color-preview purple"></div>
+        <span>Purple</span>
+      </button>
+      
+      <button class="colorway-btn" data-colorway="dark">
+        <div class="color-preview dark"></div>
+        <span>Dark Mode</span>
+      </button>
+    </div>
+    
+    <div class="info">
+      <p>Colorway changes apply to:</p>
+      <ul>
+        <li>Hacker News (news.ycombinator.com)</li>
+      </ul>
+      <p>Other features:</p>
+      <ul>
+        <li>Stack Overflow: Removes cookie banner</li>
+      </ul>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
