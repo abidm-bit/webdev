@@ -22,7 +22,7 @@
     });
 
     // Remove favicon
-    const favicon = document.querySelector('link[rel=icon]');
+    const favicon = document.querySelector('img[src="y18.svg"]');
     if (favicon && favicon.parentNode) {
       favicon.parentNode.removeChild(favicon);
     }
