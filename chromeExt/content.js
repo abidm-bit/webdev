@@ -71,7 +71,7 @@
 
     // Style comments on item pages for dark mode
     if (colorway === 'dark') {
-      const comments = document.querySelectorAll('.comment');
+      const comments = document.querySelectorAll('.comment .commtext.c00');
       comments.forEach(comment => {
         comment.style.color = scheme.textColor;
       });
