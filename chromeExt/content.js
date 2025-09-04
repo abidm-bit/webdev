@@ -69,13 +69,15 @@
       }
     });
 
-    // Style comments on item pages for dark mode
-    if (colorway === 'dark') {
-      const comments = document.querySelectorAll('.comment .commtext.c00');
-      comments.forEach(comment => {
-        comment.style.color = scheme.textColor;
-      });
-    }
+    // Style comments on item pages
+    const comments = document.querySelectorAll('.comment .commtext.c00');
+    comments.forEach(comment => {
+      if (colorway === 'dark') {
+        comment.style.color = '#ffffff'; // White for dark mode
+      } else {
+        comment.style.color = ''; // Reset to default color for other colorways
+      }
+    });
 
     // Remove favicon
     const favicon = document.querySelector('img[src="y18.svg"]');
