@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Stack Overflow & YNCombinator Modifications",
+  "description": "Removes the OneTrust cookie banner & styles the Hacker News page",
+  "version": "1.0.0",
+  "incognito": "split",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://stackoverflow.com/questions*",
+        "https://news.ycombinator.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_start"
+    }
+  ]
+}
+
+
