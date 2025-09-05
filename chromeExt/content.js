@@ -64,9 +64,7 @@
 
     const textElements = document.querySelectorAll('table#hnmain td');
     textElements.forEach(td => {
-      if (colorway === 'dark') {
-        td.style.color = scheme.textColor;
-      }
+      td.style.color = scheme.textColor;
     });
 
     // Style comments on item pages
