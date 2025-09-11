@@ -68,7 +68,7 @@
     });
 
     // Style comments on item pages
-    const comments = document.querySelectorAll('.comment .commtext.c00');
+    const comments = document.querySelectorAll('.comment .commtext.c00, .comment .commtext.c5A');
     comments.forEach(comment => {
       if (colorway === 'dark') {
         comment.style.color = '#ffffff'; // White for dark mode
